@@ -1,6 +1,7 @@
 package cn.huangchucai.shopping_cart.utils;
 
 import org.springframework.beans.factory.FactoryBean;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -17,12 +18,10 @@ import java.sql.Statement;
 @Component("statement")
 @ConfigurationProperties(prefix = "spring.datasource")
 public class StatementFactory implements FactoryBean<Statement> {
-    // TODO: 把数据库地址放到配置文件里
-    private static final String DB_PATH = "jdbc:sqlite:resources/sample.db";
     private String url;
-
+    @Value("${name}")
+    private String name;
     public void setUrl(String url) {
-        System.out.println(url);
         this.url = url;
     }
 
