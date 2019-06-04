@@ -2,7 +2,6 @@ package cn.huangchucai.shopping_cart.cart;
 
 import cn.huangchucai.shopping_cart.cart.model.*;
 import cn.huangchucai.shopping_cart.product.model.Product;
-import cn.huangchucai.shopping_cart.order.model.CreateOrderResponse;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

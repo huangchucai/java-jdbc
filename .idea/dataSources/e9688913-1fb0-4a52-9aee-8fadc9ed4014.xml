@@ -41,7 +41,6 @@
     </column>
     <index id="13" parent="6" name="product_id_uindex">
       <ColNames>id</ColNames>
-      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <key id="14" parent="6" name="product_pk">

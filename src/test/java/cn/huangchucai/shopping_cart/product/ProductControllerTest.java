@@ -1,7 +1,7 @@
 // package cn.huangchucai.shopping_cart.product;
 //
 // import cn.huangchucai.shopping_cart.product.model.*;
-// import cn.huangchucai.shopping_cart.validator.CreateProductRequestValidator;
+// import cn.huangchucai.shopping_cart.product.view.validator.CreateProductRequestValidator;
 // import org.junit.Test;
 // import org.springframework.http.HttpStatus;
 // import org.springframework.http.ResponseEntity;
