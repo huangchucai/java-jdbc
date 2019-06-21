@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
     DAO -- Data access object
@@ -29,11 +31,35 @@ public class ProductDao {
         }
     }
 
+    public List<Product> getProducts() {
+        List<Product> list = new ArrayList<>();
+        try {
+            // 构造SQL查询语句, 然后执行
+            String query = "SELECT * FROM `product`";
+            ResultSet rs = statement.executeQuery(query);
+            //根据SQL查询的结果, 构造Product对象, 并返回
+            if (rs.next()) {
+                Product product = new Product(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("description"),
+                        rs.getDouble("price")
+                );
+                list.add(product);
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            System.out.println("Failed to query product from DB.");
+        }
+
+        return list;
+    }
+
     public Product get(int id) {
         try {
             // 构造SQL查询语句, 然后执行
             String query = "SELECT * FROM `product` WHERE id = " + id;
-            System.out.println(query);
             ResultSet rs = statement.executeQuery(query);
 
             //根据SQL查询的结果, 构造Product对象, 并返回

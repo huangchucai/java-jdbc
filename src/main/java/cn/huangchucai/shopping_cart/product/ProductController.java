@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class ProductController {
     // 校验创建创建商品的参数
@@ -21,13 +23,13 @@ public class ProductController {
     // 获取所有的商品
     @GetMapping("/products")
     public ResponseEntity<ListProductResponse> listProducts() {
-        return new ResponseEntity<>(new ListProductResponse(), HttpStatus.OK);
+        List<Product> productList = productDao.getProducts();
+        return new ResponseEntity<>(new ListProductResponse(productList), HttpStatus.OK);
     }
 
     // 获取单个商品
     @GetMapping("/products/{productId}")
     public ResponseEntity<GetProductResponse> getProduct(@PathVariable int productId) {
-        System.out.println(productId);
         Product product = productDao.get(productId);
         return new ResponseEntity<>(new GetProductResponse(product), HttpStatus.OK);
     }
